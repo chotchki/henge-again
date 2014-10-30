@@ -1,6 +1,6 @@
 "use strict";
-define(['angular', 'albumController'], function(angular) {
+define(['angular',  'albumLoaderDirective', 'albumViewDirective'], function(angular) {
   var mod = { moduleName: 'app' };
-  var photoDirApp = angular.module(mod.moduleName, ['albumController']);
+  var photoDirApp = angular.module(mod.moduleName, ['albumCollectionDirective', 'albumLoaderDirective', 'albumViewDirective']);
   return mod;
 });

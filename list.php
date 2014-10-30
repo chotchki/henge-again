@@ -14,7 +14,7 @@ if(!isset($album)){
 
 $items = array();
 foreach($raw_items as $raw_item){
-  if(preg_match("/^\./", $raw_item)){
+  if(preg_match("/\/\..*?$/", $raw_item)){
     continue;
   }
 
@@ -31,12 +31,12 @@ foreach($raw_items as $raw_item){
     $dir_contents = scandir($real_raw_item);
     foreach($dir_contents as $dir_content){
       if(preg_match("/\.(jpe?g|gif|png|arw|raw)$/i", $dir_content) === 1){
-         $thumb_url = "thumbs.php?name=" . urlencode($album . "/" . $raw_item . "/" . $dir_content) . "&width=200&height=200";
+         $thumb_url = "thumbs.php?name=" . urlencode($raw_item) . "&width=200&height=200";
          break;
       }
     }
   } else {
-    $thumb_url = "thumbs.php?name=" . urlencode($album . "/" . $raw_item) . "&width=200&height=200";
+    $thumb_url = "thumbs.php?name=" . urlencode($raw_item) . "&width=200&height=200";
   }
 
   $items[] = array(

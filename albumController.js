@@ -4,7 +4,7 @@ define(['angular', 'albumListService'], function(angular) {
   var albumController = angular.module(mod.moduleName, ['albumListService']);
   albumController.controller('AlbumCtrl', ['$scope', 'Album',
     function($scope, Album){
-      $scope.items = Album.contents();
+      $scope.albums = Album.contents();
     }
   ]);
 

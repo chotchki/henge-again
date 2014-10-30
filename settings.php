@@ -45,7 +45,7 @@ function getRealItemPath($path){
   }
 
   $album_name = getAlbumName($path);
-
+  
   if($album_name == null){
     $possible_render_path = $render_dir . "/" . $path;
     if(is_dir($possible_render_path) || is_file($possible_render_path)){
@@ -94,16 +94,24 @@ function getSimpleAlbumList($album='/'){
 
     return array_unique(array_merge($raw_dir_list, $render_dir_list));
   }
+
   $raw_dir_path = $raw_dir . "/" . $album;
   $render_dir_path = $render_dir . "/" . $album;
 
   if(is_dir($render_dir_path)){
-    return scandir($render_dir_path);
+    $contents = scandir($render_dir_path);
   } elseif(is_dir($raw_dir_path)){
-    return scandir($raw_dir_path);
+    $contents = scandir($raw_dir_path);
   } else {
-    return array();
+    $contents = array();
   }
+
+  array_walk($contents, function(&$value, $key){
+    global $album;
+    $value = $album . '/' . $value;
+  });
+
+  return $contents;
 }
 
 ?>
