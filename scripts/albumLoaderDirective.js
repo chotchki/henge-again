@@ -1,5 +1,5 @@
 "use strict";
-define(['angular'], function(angular){
+define(['angular', 'albumListService'], function(angular){
   var mod = { moduleName: 'albumLoaderDirective' };
   var albumLoaderDirective = angular.module(mod.moduleName, ['albumListService']);
 
@@ -16,7 +16,7 @@ define(['angular'], function(angular){
     return {
       restrict: 'A',
       controller: 'albumLoaderController',
-      transclude: true
+      replace: true
     };
   });
   return mod;
