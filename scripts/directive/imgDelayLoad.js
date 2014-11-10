@@ -11,7 +11,7 @@ define(['angular'], function(angular){
       },
       replace: true,
       template: '<img height="{{item.thumbHeight}}" width="{{item.thumbWidth}}"' +
-      'ng-src="/photos/thumbs.php?name={{item.name | urlEscape}}&height={{item.thumbHeight | urlEscape}}&width={{item.thumbWidth | urlEscape}}" />'
+      'ng-src="/photos/thumbs.php?name={{item.name | urlEscape}}&height={{item.thumbHeight | hidpi | urlEscape}}&width={{item.thumbWidth | hidpi | urlEscape}}" />'
     }
   });
   

@@ -24,6 +24,7 @@ define(['angular', 'service/albumInfo'], function(angular){
 	            var s2 = s;
 	            s2.albums.push(album);
 	            s2.loading = false;
+	            s2.loadNextAlbum(); //Since one album is not enough!
 			});
 		} else {
 		  a.next({current: s.albums[s.albums.length - 1].name}, function(album){
