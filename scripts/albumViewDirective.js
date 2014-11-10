@@ -4,7 +4,10 @@ define(['angular', 'albumListService'], function(angular){
   var albumViewDirective = angular.module(mod.moduleName, ['albumListService']);
 
   albumViewDirective.controller('albumViewController', ['$scope', 'AlbumList', function($scope, AlbumList){
-    $scope.items = AlbumList.subContents({album: $scope.album.name});
+    AlbumList.subContents({album: $scope.album.name}, function(items){
+    	var s = $scope;
+    	s.items = items.slice(0, 7);	
+    });
   }]);
 
   albumViewDirective.directive('albumView', function(){

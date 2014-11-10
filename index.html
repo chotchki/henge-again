@@ -18,12 +18,15 @@
       <div ng-repeat="album in albums">
       	<album-view album="album"></album-view>
       </div>
+      <div ng-if="loading">
+        I'm loading!
+      </div>
     </div>
   </div>
 
   <div class="footer">
-    <div class="container">
-      <p class="text-muted">All Rights Reserved  &copy; Christopher Hotchkiss</p>
+    <div class="container-fluid">
+      <p class="text-muted">All Rights Reserved  &copy; 2014 Christopher Hotchkiss</p>
     </div>
   </div>
   <script data-main="main" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.15/require.min.js"></script>

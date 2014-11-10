@@ -28,7 +28,7 @@ if($source_exists){
   $source_mod = filemtime($source);
 }
 
-$thumb = $thumb_dir . "/" . $name . "_" . $width . "x" . $height;
+$thumb = $thumb_dir . "/" . $name . "_" . $width . "x" . $height . ".jpeg";
 $thumb_exists = file_exists($thumb);
 if($thumb_exists){
   $thumb_mod = filemtime($thumb);
@@ -48,8 +48,14 @@ if(!$source_exists){
 }
 
 if($thumb_exists == false || $thumb_mod < $source_mod){
-  $cmd = "convert -resize " . $width . "x" . $height . "^ -gravity center -crop " . $width . "x" . $height . "+0+0 " . escapeshellarg($source) . " " . escapeshellarg($thumb);
-  //$cmd = "convert -geometry " . $width . "x" . $height . " " . escapeshellarg($source) . " " . escapeshellarg($thumb);
+  $cmd = "convert -auto-orient " . escapeshellarg($source) . " " . escapeshellarg($thumb);
+  $output = system($cmd, $status);
+  if($status != 0){
+  	http_response_code(500);
+  	die("Failed to auto orient " . $cmd . " | " . $status . " | " . $output);
+  }
+  
+  $cmd = "convert -geometry " . "x" . $height . " " . escapeshellarg($thumb) . " " . escapeshellarg($thumb);
   $output = system($cmd, $status);
   if($status != 0){
     http_response_code(500);
