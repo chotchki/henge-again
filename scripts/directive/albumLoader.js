@@ -1,10 +1,10 @@
 "use strict";
 define(['angular', 'service/albumInfo'], function(angular){
   var mod = { moduleName: 'directive/albumLoader' };
-  var albumLoader = angular.module(mod.moduleName, ['service/albumInfo']);
-
   
-  albumLoader.controller('albumLoaderController', ['$scope', 'AlbumInfo', function($scope, AlbumInfo){
+  angular.module(mod.moduleName, ['service/albumInfo'])
+  
+  .controller('albumLoaderController', ['$scope', 'AlbumInfo', function($scope, AlbumInfo){
 	$scope.albums = [];
 	
 	$scope.loading = false;
@@ -20,25 +20,25 @@ define(['angular', 'service/albumInfo'], function(angular){
 		s.loading = true;
 		
 		if(s.albums.length == 0){
-			a.next(function(album){
+			a.getFirst(function(album){
 	            var s2 = s;
-	            s2.albums.push(album);
+	            s2.albums = s2.albums.concat(album);
 	            s2.loading = false;
 	            s2.loadNextAlbum(); //Since one album is not enough!
 			});
 		} else {
-		  a.next({current: s.albums[s.albums.length - 1].name}, function(album){
+		  a.getNext({album: s.albums[s.albums.length - 1].name}, function(album){
             var s2 = s;
-            s2.albums.push(album);
+            s2.albums = s2.albums.concat(album);
             s2.loading = false;
 		  });
 		}
 	}
 	
 	$scope.loadNextAlbum();
-  }]);
+  }])
 
-  albumLoader.directive('albumLoader', ['$window', 'AlbumInfo', function($window, AlbumInfo){
+  .directive('albumLoader', ['$window', 'AlbumInfo', function($window, AlbumInfo){
     return {
       restrict: 'A',
       controller: 'albumLoaderController',

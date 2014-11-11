@@ -1,5 +1,5 @@
 <div>
-  <h3><small>{{album.name}}</small></h3>
+  <h3><small><a class="text-muted" ui-sref="album({album: album.name})">{{album.name}}</a></small></h3>
   <br />
   <img-delay-load style="padding: 1px;" ng-repeat="item in album.items" item="item"></img-delay-load>
 </div>

@@ -1,6 +1,24 @@
 "use strict";
-define(['angular', 'directive/albumLoader', 'directive/albumView', 'filter/hidpi', 'filter/urlEscape'], function(angular) {
+define(['angular',
+        
+        'directive/albumLoader', 
+        'directive/albumView',
+        'directive/singleAlbumView',
+        
+        'filter/hidpi', 
+        'filter/urlEscape',
+        
+        'routes/routes'], function(angular) {
   var mod = { moduleName: 'app' };
-  var photoDirApp = angular.module(mod.moduleName, ['directive/albumLoader', 'directive/albumView', 'filter/hidpi', 'filter/urlEscape']);
+  angular.module(mod.moduleName, ['ui.router',
+                                  
+                                  'directive/albumLoader', 
+                                  'directive/albumView',
+                                  'directive/singleAlbumView',
+                                  
+                                  'filter/hidpi', 
+                                  'filter/urlEscape',
+                                  
+                                  'routes/routes']);
   return mod;
 });

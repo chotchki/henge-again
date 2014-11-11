@@ -1,9 +1,10 @@
 "use strict";
 define(['angular'], function(angular){
   var mod = { moduleName: 'directive/imgDelayLoad' };
-  var albumLoader = angular.module(mod.moduleName, []);
+  
+  angular.module(mod.moduleName, [])
 
-  albumLoader.directive('imgDelayLoad', function(){
+  .directive('imgDelayLoad', function(){
     return {
       restrict: 'E',
       scope: {
