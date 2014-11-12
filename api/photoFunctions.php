@@ -42,7 +42,7 @@ function getItemSize($path){
 }
 
 function getAlbumInfo($album){
-	global $thumb_dir;
+	global $photo_size, $thumb_dir;
 	
 	$item_list = getSimpleAlbumList($album);
 	

@@ -10,6 +10,10 @@ define(['angular', 'directive/imgDelayLoad'], function(angular){
   .directive('albumView', function(){
     return {
       restrict: 'E',
+      scope: {
+        album: "=",
+        sizeRatio: "="  
+      },
       controller: 'albumViewController',
       templateUrl: 'views/albumView.html'
     };

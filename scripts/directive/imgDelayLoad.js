@@ -8,11 +8,12 @@ define(['angular'], function(angular){
     return {
       restrict: 'E',
       scope: {
-    	item: "="  
+    	item: "=",
+    	sizeRatio: "="
       },
       replace: true,
-      template: '<img height="{{item.thumbHeight}}" width="{{item.thumbWidth}}"' +
-      'ng-src="/photos/thumbs.php?name={{item.name | urlEscape}}&height={{item.thumbHeight | hidpi | urlEscape}}&width={{item.thumbWidth | hidpi | urlEscape}}" />'
+      template: '<img height="{{item.thumbHeight * sizeRatio}}" width="{{item.thumbWidth * sizeRatio}}"' +
+      'ng-src="/photos/thumbs.php?name={{item.name | urlEscape}}&height={{item.thumbHeight * sizeRatio | hidpi | urlEscape}}&width={{item.thumbWidth * sizeRatio | hidpi | urlEscape}}" />'
     }
   });
   
