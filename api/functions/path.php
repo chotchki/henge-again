@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__FILE__) . "../../settings.php";
+
 //Sanity Check all paths
 function isSafePath($path){
 	return ($path === realpath($path));

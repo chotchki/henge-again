@@ -1,7 +1,7 @@
 <?php
 
 require_once dirname(__FILE__) . "../settings.php";
-require_once dirname(__FILE__) . "pathFunctions.php";
+require_once dirname(__FILE__) . "functions/path.php";
 
 function getListOfAlbums(){
 	global $raw_dir, $render_dir;
