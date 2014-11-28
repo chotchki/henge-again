@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . "photoFunctions.php";
+require_once dirname(__FILE__) . "/functions/photo.php";
 
 $name = $_GET["name"];
 $height = $_GET["height"];

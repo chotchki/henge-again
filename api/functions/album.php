@@ -12,29 +12,28 @@ function getListOfAlbums(){
 	
 	$contents_raw = array_unique(array_merge($raw_dir_list, $render_dir_list));
 	
-	$contents = array();
-	foreach($contents_raw as $content_raw){
-		if(preg_match('/^\./', $value) === 0){
-			continue;
-		}
-		
-		array_push($contents, $content_raw);
-	}
+	$contents = preg_grep("/^\\./",$contents_raw,PREG_GREP_INVERT);
+	rsort($contents, SORT_NATURAL | SORT_FLAG_CASE);
 	
 	return $contents;
 }
 
 function getContentsOfAlbum($album){
+	global $raw_dir, $render_dir;
+	
 	$raw_dir_path = $raw_dir . "/" . $album;
 	$render_dir_path = $render_dir . "/" . $album;
 	
 	if(is_dir($render_dir_path) && isSafePath($render_dir_path)){
-		$contents = scandir($render_dir_path);
+		$contents_raw = scandir($render_dir_path);
 	} elseif(is_dir($raw_dir_path) && isSafePath($raw_dir_path)){
-		$contents = scandir($raw_dir_path);
+		$contents_raw = scandir($raw_dir_path);
 	} else {
 		return false;
 	}
+	
+	$contents = preg_grep("/^\\./",$contents_raw,PREG_GREP_INVERT);
+	sort($contents, SORT_NATURAL | SORT_FLAG_CASE);
 	
 	array_walk($contents, function(&$value, $key) use ($album) {
 		$value = $album . '/' . $value;

@@ -1,45 +1,43 @@
 <?php
 //This method returns the album details of the NEXT album after the one passed in.
 
-require_once "functions.php";
-require_once "photoFunctions.php";
+require_once dirname(__FILE__) . "/functions/album.php";
 
-$album = $_GET["album"];
+$album = isset($_GET["album"]) ? $_GET["album"] : null;
 
 $next = isset($_GET["next"]) ? true : false; //If set, return the next album NOT the asked for one
 $previous = isset($_GET["previous"]) ? true : false; //If set, return all the albums up to the asked for one
 
 if($next && $previous){
-  http_response_code(409);
-  die("Only one modifier allowed.");
+	http_response_code(409);
+	die("Only one modifier allowed.");
 }
 
 //All the albums to return
 $selected_albums = array();
 
-$album_list = getSimpleAlbumList("/");
-rsort($album_list, SORT_NATURAL | SORT_FLAG_CASE);
+$album_list = getListOfAlbums();
 
 if(!isset($album)){
-  array_push($selected_albums, $album_list[0]);
+	array_push($selected_albums, $album_list[0]);
 } elseif(!$next && !$previous){
-  array_push($selected_albums, $album);
+	array_push($selected_albums, $album);
 } elseif($next){
-  $selected_album_key = array_search($album, $album_list);
-  if($selected_album_key === false || (count($album_list) - 1)  < ($selected_album_key + 1)){
-    http_response_code(404);
-    die("Album Not Found");
-  } else {
-    array_push($selected_albums, $album_list[$selected_album_key + 1]);
-  }
+	$selected_album_key = array_search($album, $album_list);
+	if($selected_album_key === false || (count($album_list) - 1)  < ($selected_album_key + 1)){
+		http_response_code(404);
+		die("Album Not Found");
+	} else {
+		array_push($selected_albums, $album_list[$selected_album_key + 1]);
+	}
 } else {
-  $selected_album_key = array_search($album, $album_list);
-  if($selected_album_key === false){
-    http_response_code(404);
-    die("Album Not Found");
-  } else {
-    array_push($selected_albums, array_slice($album_list, 0, $selected_album_key));
-  }
+	$selected_album_key = array_search($album, $album_list);
+	if($selected_album_key === false){
+		http_response_code(404);
+		die("Album Not Found");
+	} else {
+		array_push($selected_albums, array_slice($album_list, 0, $selected_album_key));
+	}
 }
 
 $albums = array();
