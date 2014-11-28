@@ -13,7 +13,7 @@ define(['angular'], function(angular){
       },
       replace: true,
       template: '<img height="{{item.thumbHeight * sizeRatio}}" width="{{item.thumbWidth * sizeRatio}}"' +
-      'ng-src="/photos/thumbs.php?name={{item.name | urlEscape}}&height={{item.thumbHeight * sizeRatio | hidpi | urlEscape}}&width={{item.thumbWidth * sizeRatio | hidpi | urlEscape}}" />'
+      'ng-src="/photos/api/thumbs.php?name={{item.name | urlEscape}}&height={{item.thumbHeight * sizeRatio | hidpi | urlEscape}}&width={{item.thumbWidth * sizeRatio | hidpi | urlEscape}}" />'
     }
   });
   
