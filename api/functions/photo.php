@@ -91,7 +91,7 @@ function getThumbRealPath($name, $height, $width){
 	}
 	$source_mod = filemtime($source);
 	
-	$thumb = $thumb_dir . "/" . $name . "_" . $width . "x" . $height . ".jpeg";
+	$thumb = $thumb_dir . "/" . $name . "_x" . $height . ".jpeg";
 	$thumb_exists = file_exists($thumb);
 	if($thumb_exists){
 		$thumb_mod = filemtime($thumb);
@@ -121,7 +121,7 @@ function getThumbRealPath($name, $height, $width){
 				return false;
 			}	
 		} elseif(isMovie($source)){ //Convert movies
-			$cmd = "ffmpeg -loglevel error -i " . escapeshellarg($source) . ' -vf "thumbnail,scale="' . $width . ":" . $height . '" -frames:v 1 ' . escapeshellarg($thumb);
+			$cmd = "ffmpeg -loglevel error -i " . escapeshellarg($source) . ' -vf "thumbnail,scale=' . $width . ":" . $height . '" -frames:v 1 ' . escapeshellarg($thumb);
 			$output = system($cmd, $status);
 			if($status != 0){
 				error_log("Failed to resize " . $cmd . " | " . $status . " | " . $output);
