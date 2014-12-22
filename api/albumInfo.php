@@ -7,8 +7,9 @@ $album = isset($_GET["album"]) ? $_GET["album"] : null;
 
 $next = isset($_GET["next"]) ? true : false; //If set, return the next album NOT the asked for one
 $previous = isset($_GET["previous"]) ? true : false; //If set, return all the albums up to the asked for one
+$all = isset($_GET["all"]) ? true : false; //If set, return all the albums up to the asked for one
 
-if($next && $previous){
+if($next && $previous && $all){
 	http_response_code(409);
 	die("Only one modifier allowed.");
 }
@@ -18,7 +19,9 @@ $selected_albums = array();
 
 $album_list = getListOfAlbums();
 
-if(!isset($album)){
+if($all){
+	$selected_albums = $album_list;
+} elseif(!isset($album)){
 	array_push($selected_albums, $album_list[0]);
 } elseif(!$next && !$previous){
 	array_push($selected_albums, $album);

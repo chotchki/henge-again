@@ -22,6 +22,11 @@ define(['angular', 'angular-resource'], function(angular, resource){
           method: 'GET',
           isArray: true
         },
+        getAll: {
+          params: {all: true},
+          method: 'GET',
+          isArray: true
+        }
       });
     }
   ]);
