@@ -9,7 +9,7 @@ define(['angular', 'ui-router'], function(angular){
   }])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/');
+    //$urlRouterProvider.otherwise('/');
 	  
     $stateProvider
       .state("stream", {
@@ -21,6 +21,16 @@ define(['angular', 'ui-router'], function(angular){
         url: "/album/:album",
         templateUrl: 'views/singleAlbumView.html',
         data : { pageTitle: 'Album View'}
+      })
+      .state("item", {
+        url: "/item/:item",
+        templateUrl: 'views/itemView.html',
+        data : { pageTitle: 'Item View'}
+      })
+      .state("timeline", {
+        url: "/timeline",
+        templateUrl: 'views/timeline.html',
+        data : { pageTitle: 'Timeline'}
       });
   }]);
 
