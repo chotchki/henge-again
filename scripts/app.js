@@ -3,8 +3,8 @@ define(['angular',
         
         'directive/albumLoader', 
         'directive/albumView',
-        'directive/itemView',
         'directive/singleAlbumView',
+        'directive/singleItemView',
         'directive/timelineLoader',
         
         'filter/hidpi', 
@@ -16,8 +16,8 @@ define(['angular',
                                   
                                   'directive/albumLoader', 
                                   'directive/albumView',
-                                  'directive/itemView',
                                   'directive/singleAlbumView',
+                                  'directive/singleItemView',
                                   'directive/timelineLoader',
                                   
                                   'filter/hidpi', 

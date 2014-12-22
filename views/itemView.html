@@ -1,3 +1,4 @@
-<div class="row" item-view>
-  <h3><small>{{item}}</small></h3>
+<div class="row" single-item-view>
+  <h3><small><a ui-sref="album({album: item.album})">{{item.album}}</a>/{{item.rawName}}</small></h3>
+  <img-delay-load item="item" size-ratio="4"></img-delay-load>
 </div>

@@ -1,5 +1,5 @@
 "use strict";
-define(['angular', 'ui-router'], function(angular){
+define(['angular', 'ui-router', 'service/albumInfo'], function(angular){
   var mod = { moduleName: 'directive/singleAlbumView' };
   angular.module(mod.moduleName, ['service/albumInfo'])
 	  

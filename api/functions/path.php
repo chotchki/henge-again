@@ -24,6 +24,22 @@ function getRealItemPath($path){
 	return false;
 }
 
+//Find the album name if possible
+function getAlbumName($path){
+  if(preg_match("/(.*)\/(.*?)/", $path, $match)){
+    return $match[1];
+  }
+  return false;
+}
+
+//Find the item name if possible
+function getItemName($path){
+	if(preg_match("/\/(.*?)$/", $path, $match)){
+		return $match[1];
+	}
+	return false;
+}
+
 //If private is in the path we will restrict it to the local network
 function isPrivatePath($path){
 	if(preg_match("/private/i", $path)){
