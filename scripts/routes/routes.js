@@ -9,7 +9,7 @@ define(['angular', 'ui-router'], function(angular){
   }])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    //$urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
 	  
     $stateProvider
       .state("stream", {
