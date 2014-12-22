@@ -9,11 +9,9 @@ define(['angular', 'ui-router'], function(angular){
   }])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-    //$urlRouterProvider.otherwise(function($injector, $location){
-    //	console.log($injector);
-    //	console.log($location);
-    //	return '/';
-    //});
+    $urlRouterProvider.otherwise(function($injector, $location){
+    	return '/';
+    });
 	  
     $stateProvider
       .state("stream", {
