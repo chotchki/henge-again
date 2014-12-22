@@ -1,7 +1,7 @@
 <div class="row" timeline-loader>
-  <div ng-repeat="album in albums">
-    <a ui-sref="album({album : album.name})">{{album.name}}</a>
-  </div>
+  <ul class="list-unstyled" ng-repeat="album in albums">
+    <li><a ui-sref="album({album : album.name})">{{album.name}}</a></li>
+  </ul>
   <div ng-if="loading">
     <h3 class="text-center"><i class="fa fa-spinner fa-spin"></i> Loading More Photos!</h3>
   </div>

@@ -3,6 +3,7 @@ define(['angular',
         
         'directive/albumLoader', 
         'directive/albumView',
+        'directive/itemView',
         'directive/singleAlbumView',
         'directive/timelineLoader',
         
@@ -15,6 +16,7 @@ define(['angular',
                                   
                                   'directive/albumLoader', 
                                   'directive/albumView',
+                                  'directive/itemView',
                                   'directive/singleAlbumView',
                                   'directive/timelineLoader',
                                   
